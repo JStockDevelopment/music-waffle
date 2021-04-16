@@ -29,7 +29,7 @@ export default function Dashboard({ code }) {
     useEffect(() => {
         if (!playingTrack) return
 
-        axios.get('http://music-waffle-o5gf4.ondigitalocean.app/lyrics', {
+        axios.get('https://music-waffle-o5gf4.ondigitalocean.app/lyrics', {
             params: {
                 track: playingTrack.title,
                 artist: playingTrack.artist
