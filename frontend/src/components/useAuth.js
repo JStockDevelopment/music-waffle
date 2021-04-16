@@ -23,7 +23,7 @@ export default function useAuth(code) {
     useEffect(() => {
         if(!code) return
         console.log("attempting to login")
-        axios.post('http://localhost:3001/login' ,{
+        axios.post('http://music-waffle-o5gf4.ondigitalocean.app/login' ,{
             code,
         })
         .then(res => {
@@ -47,7 +47,7 @@ export default function useAuth(code) {
         console.log("refrshing token")
         const interval = setInterval(() => {
 
-        axios.post('http://localhost:3001/refresh' ,{
+        axios.post('http://music-waffle-o5gf4.ondigitalocean.app/refresh' ,{
             refreshToken,
         })
         .then(res => {

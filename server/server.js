@@ -57,7 +57,4 @@ app.get('/lyrics', async(req, res) => {
 })
 
 
-app.get('/spotify/success', async(req, res) => {
-    console.log("SPOTIFY CAME BACK")
-})
 app.listen(3001)
