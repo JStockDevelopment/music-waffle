@@ -32,7 +32,7 @@ export default function useAuth(code) {
             setExpiresIn(res.data.expiresIn)
         
             console.log("redirecting to dashboard")
-            window.history.pushState({}, null, "/dashboard")
+            window.history.pushState({}, null, "https://music-waffle-frontend-ewimj.ondigitalocean.app/dashboard")
         })
         .catch(() => {
                 // window.location ='/'
