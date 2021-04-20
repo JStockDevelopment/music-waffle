@@ -2,5 +2,6 @@ server/.env
 frontend/node_modules
 server/node_modules
 node_modules
-app-spec.yaml
+server/app-spec.yaml
+frontend/app-spec.yaml
 frontend/.env
