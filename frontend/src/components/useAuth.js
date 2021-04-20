@@ -22,32 +22,25 @@ export default function useAuth(code) {
 
     useEffect(() => {
         if(!code) return
-        console.log("attempting to login")
-        axios.post('https://music-waffle-o5gf4.ondigitalocean.app/login' ,{
+        axios.post(process.env.REACT_APP_BASE_URL + '/login' ,{
             code,
         })
         .then(res => {
+            console.log(res)
             setAccessToken(res.data.accessToken)
             setRefreshToken(res.data.refreshToken)
             setExpiresIn(res.data.expiresIn)
-        
-            console.log("redirecting to dashboard")
-            window.history.pushState({}, null, "https://music-waffle-frontend-ewimj.ondigitalocean.app/dashboard")
+            window.history.pushState({}, null, process.env.REACT_APP_BASE_URL + '/dashboard')
         })
         .catch(() => {
-                // window.location ='/'
         })
     }, [code])
 
     useEffect(() => {
-        console.log("checking refresh")
-        console.log(refreshToken)
-        console.log(expiresIn)
         if(!refreshToken || !expiresIn) return
-        console.log("refrshing token")
         const interval = setInterval(() => {
 
-        axios.post('https://music-waffle-o5gf4.ondigitalocean.app/refresh' ,{
+        axios.post(process.env.REACT_APP_BASE_URL + '/refresh' ,{
             refreshToken,
         })
         .then(res => {
@@ -55,7 +48,6 @@ export default function useAuth(code) {
             setExpiresIn(res.data.expiresIn)
         })
         .catch(() => {
-                // window.location ='/'
         })
     }, (expiresIn - 60) * 1000)
 

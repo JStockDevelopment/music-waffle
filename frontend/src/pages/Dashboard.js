@@ -8,12 +8,10 @@ import Player from '../components/Player'
 import axios from 'axios'
 
 const spotifyApi = new SpotifyWebApi({
-    clientId: 'f38e45905b8f40f4a2400c457ec4af11'
+    clientId: process.env.REACT_APP_CLIENT_ID
 })
 
 export default function Dashboard({ code }) {
-    console.log("made it to the dashboard")
-    
     const accessToken = useAuth(code)
     const [search, setSearch] = useState("")
     const [searchResults, setSearchResults] = useState([])
@@ -29,7 +27,7 @@ export default function Dashboard({ code }) {
     useEffect(() => {
         if (!playingTrack) return
 
-        axios.get('https://music-waffle-o5gf4.ondigitalocean.app/lyrics', {
+        axios.get(process.env.REACT_APP_BASE_URL + '/lyrics', {
             params: {
                 track: playingTrack.title,
                 artist: playingTrack.artist

@@ -9,10 +9,10 @@ import '../css/App.css'
 
 
 const AUTH_URL = 'https://accounts.spotify.com/authorize?' +
-  'client_id=f38e45905b8f40f4a2400c457ec4af11&' +
+  'client_id=' + process.env.REACT_APP_CLIENT_ID+ '&' +
   'response_type=code&' +
   'scope=streaming%20user-read-email%20user-read-private%20user-read-playback-state%20user-modify-playback-state%20user-library-read%20user-library-modify&' +
-  'redirect_uri=https://music-waffle-frontend-ewimj.ondigitalocean.app/dashboard'
+  'redirect_uri=' + process.env.REACT_APP_REDIRECT_URL
 
 const code = new URLSearchParams(window.location.search).get('code');
 
