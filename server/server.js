@@ -18,6 +18,11 @@ app.post('/login', (req, res) => {
         clientSecret: process.env.REACT_APP_CLIENT_SECRET,
     })
 
+    console.log("code=")
+    console.log(code)
+    console.log(process.env.REACT_APP_CLIENT_ID)
+    console.log(process.env.REACT_APP_REDIRECT_URL)
+
     spotifyApi.authorizationCodeGrant(code).then(data => {
         res.json({
             accessToken: data.body.access_token,
